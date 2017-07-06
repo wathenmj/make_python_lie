@@ -1,6 +1,6 @@
 # loop_lie
-setwd("C:/Users/WATS5I/prjct_SVD/ceu_yri_chb")
-library(data.table)
+# setwd("C:/Users/WATS5I/prjct_SVD/ceu_yri_chb")
+library(data.table) # required for fread function below
 # open and load Rho_alt.R
 refGeno <- fread("ceu_yri_chb_A.raw") # work with this file and SVD
 refGeno <- refGeno[ , -c(1:6)] # 857112 genotyped markers in set
@@ -10,8 +10,9 @@ snpNo <- dim(refGeno)[2] - 2  # first two columns are ids and pops
 RhoChr <- c(rep(0,snpNo))
 timestamp() #takes about 45 minutes to run, try subsetting to get some faster results
 ##------ Fri May 26 08:47:34 2017 ------## this timestamp for Rho_alt function
+i <- 1
 for (i in 1:snpNo) {
-  a <- refGeno[ ,2]
+  a <- refGeno[ ,2] # run this line outside loop for example
   b <- refGeno[,i+2]
   Rho_alt(a,b) -> RhoChr[i]
 }
