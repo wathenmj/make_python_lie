@@ -13,9 +13,10 @@ lie <- function(x,y){
   nrows <- nrow(tbl)
   ncols <- ncol(tbl)
   rho <-0
-  if(ncols == 1 || nrows ==1)rho <- 0 else{
+  if(ncols == 1 || nrows ==1)rho <- 0 & return(rho) else{
     for(i in 1:nrows){
       for(j in 1:ncols){
+        if ((sum(tbl[i,]) * sum(tbl[,j])==0)) r <- 0 else
         r = tbl[i,j]^2/(sum(tbl[i,]) * sum(tbl[,j]))
         rho = rho + r
       }
